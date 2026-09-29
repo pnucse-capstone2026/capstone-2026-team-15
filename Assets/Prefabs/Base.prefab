@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3763130745432284887
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1207175926340280586}
+  - component: {fileID: 1168197250241220802}
+  m_Layer: 0
+  m_Name: Base
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1207175926340280586
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3763130745432284887}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1168197250241220802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3763130745432284887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1fefdf1974a8ad4395bfd268b10e4a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LegionBaseAuthoring
+  unitPrefab: {fileID: 7740870079662542886, guid: 33adc374fee9f024db303c354ee02f3b, type: 3}
+  swarmTypePrefabs:
+  - {fileID: 7740870079662542886, guid: 33adc374fee9f024db303c354ee02f3b, type: 3}
+  - {fileID: 7740870079662542886, guid: 9e674eb29c7d0814f8c444fa28b4c3f7, type: 3}
+  spawnOnStart: 1
+  spawnCount: 1
+  spawnOffset: {x: 0, y: 0, z: 0}
+  deployTargetPosition: {x: 40, y: 0, z: 40}
+  deploySpacing: 0
+  deployColumns: 1
+  overrideDetection: 1
+  unitFactionId: 1
+  spawnedUnitIsBase: 0
+  unitSearchRange: 50
+  unitTauntWeight: 1
+  unitTargetTauntThreshold: 5
+  overrideAttack: 0
+  unitAttackRange: 4
+  unitAttackCooldown: 1.4

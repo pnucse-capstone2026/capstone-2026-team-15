@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf2ebe6fccc5a0b498e53840ee9063c9, type: 3}
+  m_Name: BenchmarkConfig
+  m_EditorClassIdentifier: Assembly-CSharp::Swarm.Benchmark.BenchmarkConfig
+  scenePaths:
+  - Assets/Scenes/Test/Test_Scene.unity
+  durationSeconds: 60
+  repeats: 5
+  warmupSeconds: 3
+  betweenRunsSeconds: 1
+  disableVSync: 1
+  targetFrameRate: -1
+  renderRangedProjectiles: 1
+  sweepRenderCases: 1
+  renderCases: 0002
+  useWorkloadGrid: 1
+  instanceCounts: 20030000
+  swarmPartitions: 08000000
+  factionCount: 2
+  meleeSwarmTypeIndex: 0
+  rangedSwarmTypeIndex: 1
+  initialInstanceCapacity: 16384
+  periodicSampleIntervalSeconds: 1
+  validationRetries: 3
+  overrideSpawnSettings: 1
+  swarmTypes:
+  - id: melee
+    label: Melee Infantry
+    prefab: {fileID: 7740870079662542886, guid: 33adc374fee9f024db303c354ee02f3b, type: 3}
+  - id: archer
+    label: Archer
+    prefab: {fileID: 7740870079662542886, guid: 9e674eb29c7d0814f8c444fa28b4c3f7, type: 3}
+  spawnCases:
+  - label: Count3_Melee
+    swarmTypeIndex: 0
+    spawnCount: 1
+    soldierCount: 0
+    entries:
+    - swarmTypeIndex: 0
+      spawnCount: 1
+      soldierCount: 0
+    - swarmTypeIndex: 1
+      spawnCount: 1
+      soldierCount: 0
+  outputFolderOverride: "C:/Users/User/Desktop/\uC0C8 \uD3F4\uB354"
+  writePerFrameCsv: 0
+  enableRendererInstrumentation: 0
+  windowedBuild: 0
+  windowedWidth: 1920
+  windowedHeight: 1080

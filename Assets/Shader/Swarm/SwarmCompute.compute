@@ -1,0 +1,57 @@
+﻿#pragma kernel CSMain
+
+struct GPUParticleData
+{
+    float3 UnitPos;
+    float3 LocalOffset;
+    float FacingYaw;
+    float Phase;
+    float PhaseSpeed;
+    float MotionScale;
+    float RenderScale;
+};
+
+StructuredBuffer<GPUParticleData> _Particles;
+RWStructuredBuffer<float4x4> _VisibleMatrices;
+uint _TotalParticleCount;
+float _ParticleScale;
+float _YOffset;
+
+[numthreads(64, 1, 1)]
+void CSMain(uint3 id : SV_DispatchThreadID)
+{
+    if (id.x >= _TotalParticleCount)
+        return;
+
+    GPUParticleData data = _Particles[id.x];
+    
+    // 최종 월드 좌표 도출 (부대위치 + 병사 오프셋)
+    float3 worldPos = data.UnitPos + data.LocalOffset;
+
+    // 병사의 시선 방향(FacingYaw)에 따른 삼각함수 계산
+    float c = cos(data.FacingYaw);
+    float s = sin(data.FacingYaw);
+    float motionT = saturate(data.MotionScale);
+    float phaseEnergy = saturate(data.PhaseSpeed / 5.5);
+    float renderScale = max(data.RenderScale, 0.0);
+    float bobAmplitude = lerp(0.001, 0.08, motionT) * phaseEnergy * renderScale;
+    float strideAmplitude = lerp(0.0, 0.06, motionT) * phaseEnergy * renderScale;
+    float pitchAngle = sin(data.Phase) * lerp(0.0, 0.18, motionT) * phaseEnergy * renderScale;
+
+    float3 forward = float3(s, 0, c);
+    worldPos += forward * (cos(data.Phase) * strideAmplitude);
+    worldPos.y += _YOffset + sin(data.Phase) * bobAmplitude;
+
+    float cp = cos(pitchAngle);
+    float sp = sin(pitchAngle);
+
+    // Yaw + locomotion pitch를 섞어 정적 메쉬에도 gait가 보이게 만든다.
+    float4x4 mat = float4x4(
+        _ParticleScale * c, _ParticleScale * s * sp, _ParticleScale * s * cp, worldPos.x,
+        0, _ParticleScale * cp, _ParticleScale * -sp, worldPos.y,
+        _ParticleScale * -s, _ParticleScale * c * sp, _ParticleScale * c * cp, worldPos.z,
+        0, 0, 0, 1
+    );
+
+    _VisibleMatrices[id.x] = mat;
+}
