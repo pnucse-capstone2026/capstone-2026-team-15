@@ -20,12 +20,12 @@ MonoBehaviour:
   betweenRunsSeconds: 1
   disableVSync: 1
   targetFrameRate: -1
-  renderRangedProjectiles: 1
+  renderRangedProjectiles: 0
   sweepRenderCases: 1
-  renderCases: 0002
+  renderCases: 00010203
   useWorkloadGrid: 1
-  instanceCounts: 20030000
-  swarmPartitions: 08000000
+  instanceCounts: d0070000a00f0000401f0000803e0000
+  swarmPartitions: 040000000800000010000000
   factionCount: 2
   meleeSwarmTypeIndex: 0
   rangedSwarmTypeIndex: 1
@@ -52,9 +52,9 @@ MonoBehaviour:
     - swarmTypeIndex: 1
       spawnCount: 1
       soldierCount: 0
-  outputFolderOverride: "C:/Users/User/Desktop/\uC0C8 \uD3F4\uB354"
-  writePerFrameCsv: 0
-  enableRendererInstrumentation: 0
+  outputFolderOverride: C:/
+  writePerFrameCsv: 1
+  enableRendererInstrumentation: 1
   windowedBuild: 0
   windowedWidth: 1920
   windowedHeight: 1080
